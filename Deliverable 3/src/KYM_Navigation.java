@@ -69,6 +69,7 @@ public class KYM_Navigation
         assertTrue(driver.getCurrentUrl().contains("http://knowyourmeme.com/memes"));
     }
 
+
     // Given that I am on the Memes page
     // When I look at the header
     // It should contain the title "Meme Database"
