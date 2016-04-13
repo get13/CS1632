@@ -7,6 +7,7 @@
     NOTES:
     - Edited Player.java to use public variables instead of private
       EX) private boolean _hasSugar = false; --> public boolean _hasSugar = false;
+    - Some tests should fail because coffeemaker is flawed by nature. we'll note that in our summary
 
     Requirement completion status
     FUN-ITERATION
