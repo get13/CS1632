@@ -1,18 +1,5 @@
-/**
- * Created by George Totolos on 4/12/2016.
- */
-
-
 /*
-    NOTES:
-    - Edited Player.java to use public variables instead of private
-      EX) private boolean _hasSugar = false; --> public boolean _hasSugar = false;
-    - Edited CoffeeMaker.java
-          private int runGameLoop() --> public int runGameLoop()
-          private int runArgs(String arg) -- > public int runArgs(String arg)
-    - Some tests should fail because coffeemaker is flawed by nature. we'll note that in our summary
-
-    Requirement completion status
+Requirements tested in jUnit marked with 'XXX'. Other requirements were tested manually
     FUN-ITERATION
     FUN-UNKNOWN-COMMAND
     FUN-INPUT-CAPS
@@ -29,9 +16,7 @@ XXX FUN-UNIQ-ROOM
 
 import org.junit.*;
 import static org.junit.Assert.*;
-import org.mockito.*;
 import java.io.*;
-import java.util.*;
 
 public class unitTests
 {
@@ -264,16 +249,17 @@ public class unitTests
     Each room in the house shall have a unique adjective describing it.
 */
 
-    // Loop through all rooms and compare all adjectives
+    // Test to ensure that adjacent rooms do not
+    // have the same adjective
     @Test
-    public void test_FUN_UNIQ_ROOM()
+    public void test_FUN_UNIQ_ROOM_adjacent()
     {
-        int numRooms = 6;
+        int numRooms = 6;                       // 6 Rooms in the default game
         String output = null;
         String prevOutput = null;
-        House h = new House();
+        House h = new House();                  // Initialize House class
 
-        // Solo out room adjective
+        // Solo out room's adjective
         prevOutput = h.getCurrentRoomInfo();
         prevOutput = prevOutput.replace("You see a ", "");
         prevOutput = prevOutput.substring(0, prevOutput.indexOf(" "));
@@ -292,7 +278,41 @@ public class unitTests
         }
     }
 
-    
+    // Test to ensure that the adjective of the first room
+    // does not match an adjective of any other room
+    @Test
+    public void test_FUN_UNIQ_ROOM_all()
+    {
+        int numRooms = 6;                           // 6 Rooms in the default game
+        String [] roomAdjs = new String[numRooms];  // Array of all room adjectives
+        String output = null;
+        House h = new House();                      // Initialize House class
+
+        // Iterate through every room
+        for (int i = 0; i < numRooms-1; i ++)
+        {
+            // Solo out room's adjective
+            output = h.getCurrentRoomInfo();
+            output = output.replace("You see a ", "");
+            output = output.substring(0, output.indexOf(" "));
+
+            roomAdjs[i] = output;                   // Store adjective in array of room descriptions
+            h.moveNorth();                          // Move forward to next room
+        }
+        output = h.getCurrentRoomInfo();
+        output = output.replace("You see a ", "");
+        output = output.substring(0, output.indexOf(" "));
+
+        roomAdjs[numRooms-1] = output;               // Store adjective in array of room descriptions
+
+        for (int i = 1; i < numRooms-1; i ++)
+        {
+            assertNotEquals(roomAdjs[0],roomAdjs[i]); // Ensure that adjs are different
+        }
+
+    }
+
+
 
 }
 
