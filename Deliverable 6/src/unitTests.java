@@ -7,6 +7,9 @@
     NOTES:
     - Edited Player.java to use public variables instead of private
       EX) private boolean _hasSugar = false; --> public boolean _hasSugar = false;
+    - Edited CoffeeMaker.java
+          private int runGameLoop() --> public int runGameLoop()
+          private int runArgs(String arg) -- > public int runArgs(String arg)
     - Some tests should fail because coffeemaker is flawed by nature. we'll note that in our summary
 
     Requirement completion status
@@ -19,7 +22,7 @@ XXX FUN-LOSE
 XXX FUN-INVENTORY
 XXX FUN-LOOK
     FUN-HELP
-    FUN-UNIQ-ROOM
+XXX FUN-UNIQ-ROOM
     FUN-UNIQ-ROOM-FURNISHING
 */
 
@@ -254,8 +257,44 @@ public class unitTests
         System.out.println(output);
     }
 
-}
 
+/*
+******************************************************************************
+    FUN-UNIQ-ROOM
+    Each room in the house shall have a unique adjective describing it.
+*/
+
+    // Loop through all rooms and compare all adjectives
+    @Test
+    public void test_FUN_UNIQ_ROOM()
+    {
+        int numRooms = 6;
+        String output = null;
+        String prevOutput = null;
+        House h = new House();
+
+        // Solo out room adjective
+        prevOutput = h.getCurrentRoomInfo();
+        prevOutput = prevOutput.replace("You see a ", "");
+        prevOutput = prevOutput.substring(0, prevOutput.indexOf(" "));
+
+        // Loop through all 6 rooms comparing adjectives
+        for (int i = 0; i < numRooms-1; i ++)
+        {
+            h.moveNorth();
+            output = h.getCurrentRoomInfo();
+            output = output.replace("You see a ", "");
+            output = output.substring(0, output.indexOf(" "));
+
+            assertNotEquals(prevOutput,output); // Ensure that adjs are different
+
+            prevOutput = output;
+        }
+    }
+
+    
+
+}
 
 
 
