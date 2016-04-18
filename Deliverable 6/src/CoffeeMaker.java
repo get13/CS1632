@@ -2,7 +2,7 @@ import java.io.PrintStream;
 
 public class CoffeeMaker
 {
-    private int runGameLoop()
+    public int runGameLoop()
     {
         Player p = new Player();
         House h = new House();
@@ -11,7 +11,7 @@ public class CoffeeMaker
         return toReturn;
     }
 
-    private int runArgs(String arg)
+    public int runArgs(String arg)
     {
         System.out.println("Instructions for Coffee Maker Quest - ");
         System.out.println("You are a brave student trying to study for finals, but you need caffeine.");

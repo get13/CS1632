@@ -38,7 +38,7 @@ public class Room
         return this._southExit;
     }
 
-    private String getAdjective()
+    public String getAdjective()
     {
         String[] adjs = { "Small", "Quaint",
                 "Shiny", "Magenta", "Funny", "Sad", "Fuchsia", "Beige", "Massive", "Refinanced", "Tight", "Loose",
@@ -88,7 +88,7 @@ public class Room
         return nouns[(_pseudoRand++ % nouns.length)];
     }
 
-    private String generateDescription()
+    public String generateDescription()
     {
         String toReturn = "\nYou see a " + getAdjective() + " room.\n" +
                 "It has a " + getAdjective() + " " + getNoun() + ".\n";
