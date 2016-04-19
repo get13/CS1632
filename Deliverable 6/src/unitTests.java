@@ -13,7 +13,6 @@ XXX FUN-UNIQ-ROOM
     FUN-UNIQ-ROOM-FURNISHING
 */
 
-
 import org.junit.*;
 import static org.junit.Assert.*;
 import java.io.*;
@@ -315,21 +314,3 @@ public class unitTests
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
