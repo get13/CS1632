@@ -1,5 +1,5 @@
 /*
-Requirements tested in jUnit marked with 'XXX'. Other requirements were tested manually
+Requirements tested in JUnit marked with 'XXX'. Other requirements were tested manually
     FUN-ITERATION
     FUN-UNKNOWN-COMMAND
     FUN-INPUT-CAPS
@@ -19,7 +19,6 @@ import java.io.*;
 
 public class unitTests
 {
-
 /*
 ******************************************************************************
     FUN-LOOK
@@ -84,7 +83,6 @@ public class unitTests
         boolean hasAllItems = p.hasAllItems(); // True if all items exist in inventory
         assertTrue(hasAllItems);        // Assert that player has a full inventory
     }
-
 
 /*
 ******************************************************************************
@@ -276,7 +274,7 @@ public class unitTests
             prevOutput = output;
         }
     }
-
+    
     // Test to ensure that the adjective of the first room
     // does not match an adjective of any other room
     @Test
@@ -308,9 +306,5 @@ public class unitTests
         {
             assertNotEquals(roomAdjs[0],roomAdjs[i]); // Ensure that adjs are different
         }
-
     }
-
-
-
 }
